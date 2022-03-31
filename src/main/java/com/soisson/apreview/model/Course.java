@@ -1,10 +1,10 @@
 package com.soisson.apreview.model;
 
 public class Course {
-    public String name;
-    public double diff,teacher,ap,grade,hw;
+    public String name,diff,teacher,grade,hw;
+    public double ap;
 
-    public Course(String name,double diff,double teacher,double ap,double grade,double hw)
+    public Course(String name,String diff,String teacher,double ap,String grade,String hw)
     {
         this.name=name;
         this.diff=diff;
