@@ -9,11 +9,21 @@ import java.util.*;
 public class CourseController {
     static Map<String, Course> courseMap = new HashMap();
     static{
-        courseMap.put("compsci", new Course("Computer Science A","Easy","They don't usually teach, but the class is self-teachable.",
-                3.7,"A","less than 1 hour.","0"));
+        courseMap.put("biology", new Course("Biology","No data","No data",
+                "No data","No data","No data"));
+        courseMap.put("calcab", new Course("Calculus AB","No data","No data",
+                "No data","No data","No data"));
+        courseMap.put("calcbc", new Course("Calculus BC","No data","No data",
+                "No data","No data","No data"));
+        courseMap.put("capstone", new Course("Capstone","No data","No data",
+                "No data","No data","No data"));
+        courseMap.put("chemistry", new Course("Chemistry","No data","No data",
+                "No data","No data","No data"));
+        //getCourse("compsci");
+        //System.out.println(courseMap.get("compsci"));
         //add more courses
     }
-//how to add more classes?
+
 
     //List<Course> courses = Arrays.asList(new Course("Computer Science A",4.0,5.1,3.7,93.3,0.5));
 //    @GetMapping("/chemistry")
@@ -24,7 +34,7 @@ public class CourseController {
 //    }
     @CrossOrigin
     @GetMapping("/courses/{courseId}")
-    public Course getCourse(@PathVariable String courseId)
+    public static Course getCourse(@PathVariable String courseId)
     {
             return courseMap.get(courseId);
     }

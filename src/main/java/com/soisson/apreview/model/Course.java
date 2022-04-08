@@ -4,7 +4,7 @@ public class Course {
     public String name,diff,teacher,grade,hw;
     public double ap;
     public String id;
-    public Course(String name,String diff,String teacher,double ap,String grade,String hw,String id)
+    public Course(String name, String diff, String teacher, String grade, String hw, String id)
     {
         this.name=name;
         this.diff=diff;
