@@ -1,10 +1,13 @@
 package com.soisson.apreview.model;
 
+import com.soisson.apreview.AverageCourse;
+
 public class Course {
     public String name,diff,teacher,grade,hw;
-    public double ap;
+    public String ap;
     public String id;
-    public Course(String name, String diff, String teacher, String grade, String hw, String id)
+    public int counter;
+    public Course(String name, String diff, String teacher, String grade, String hw, String id, String ap,int counter)
     {
         this.name=name;
         this.diff=diff;
@@ -13,5 +16,6 @@ public class Course {
         this.grade=grade;
         this.hw=hw;
         this.id=id;
+        this.counter=counter;
     }
 }
