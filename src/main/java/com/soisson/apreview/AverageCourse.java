@@ -141,7 +141,7 @@ public class AverageCourse {
                 if (majority < points[i])
                     majority = i;
             }
-            return strings[majority];//add tie-breaker
+            return strings[majority];//todo add tie-breaker
         }
         for (int i = 0; i < points.length; i++) {
             total += points[i];
