@@ -1,6 +1,5 @@
 package com.soisson.apreview.controller;
 
-import com.soisson.apreview.AverageCourse;
 import com.soisson.apreview.model.Course;
 import com.soisson.apreview.model.CourseTotals;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +10,11 @@ import java.util.*;
 public class CourseController {
     static Map<String, CourseTotals> courseMap = new HashMap();
     static{
-//        courseMap.put("biology", new CourseTotals("Biology","No data","No data",
-//                "No data","No data","No data","No data", 0));
+//        Course bio = new Course("Biology","Easy","They teach every day and do it well!",
+//                "A (95-100)","1-2 hours","biology","4");
+//        CourseTotals bioTotals = new CourseTotals();
+//        bioTotals.addCourse(bio);
+//        courseMap.put("biology", bioTotals);
 //        courseMap.put("calcab", new Course("Calculus AB","No data","No data",
 //                "No data","No data","No data","No data", 0));
 //        courseMap.put("calcbc", new Course("Calculus BC","No data","No data",
@@ -81,29 +83,27 @@ public class CourseController {
 //    }
     @CrossOrigin
     @GetMapping("/courses/{courseId}")
-    public static CourseTotals getCourse(@PathVariable String courseId)
+    public static Course getCourse(@PathVariable String courseId)
     {
-            CourseTotals total = courseMap.get(courseId);
-            total.averageDiff();
-            return courseMap.get(courseId);
+            CourseTotals totalsForCourse = courseMap.get(courseId);
+            System.out.println("Found CourseTotals for "+courseId+". AP total is "+totalsForCourse.getAp()+" and counter is at "+totalsForCourse.getCounter());
+            System.out.println("Average AP value of "+totalsForCourse.calculateAverages().ap);
+            return totalsForCourse.calculateAverages();
     }
 
     @CrossOrigin
     @PostMapping("/courses")
-    public CourseTotals addCourse(@RequestBody CourseTotals newCourse)
+    public void addCourse(@RequestBody Course newCourse)
     {
-        //courseMap.putIfAbsent(newCourse.id, newCourse);
-        newCourse = new CourseTotals();
-        return newCourse;
+        CourseTotals totalsForCourse = courseMap.get(newCourse.id);
+        if (totalsForCourse==null)
+        {
+//            System.out.println("No course found with id "+newCourse.id+". Creating new CourseTotals in map.");
+            totalsForCourse = new CourseTotals();
+        }
+        totalsForCourse.addCourse(newCourse);
+//        System.out.println("Added new course to CourseTotals with ap value of "+newCourse.ap);
+//        System.out.println("New ap total for course is "+totalsForCourse.getAp());
+        courseMap.put(newCourse.id,totalsForCourse);
     }
-    @CrossOrigin
-    @PutMapping("/courses/{courseId}")
-    public Course putCourse(@PathVariable String courseId, @RequestBody Course updater)
-    {
-        CourseTotals var = courseMap.get(courseId);
-        var.addCourse(updater);
-        updater = var.getCourse();
-        return updater;
-    }
-
 }

@@ -38,15 +38,15 @@ public class AverageCourse {
 ////            updater.counter++;
 //    }
 
-    public static Course update() {
-        counter++;
-        updater.ap = updateAverage(updater.ap, 1);
-        updater.grade = updateAverage(updater.grade, 2);
-        updater.hw = updateAverage(updater.hw, 3);
-        updater.diff = updateAverage(updater.diff, 4);
-        updater.teacher = updateAverage(updater.teacher, 5);
-        return updater;
-    }
+//    public static Course update() {
+//        counter++;
+//        updater.ap = updateAverage(updater.ap, 1);
+//        updater.grade = updateAverage(updater.grade, 2);
+//        updater.hw = updateAverage(updater.hw, 3);
+//        updater.diff = updateAverage(updater.diff, 4);
+//        updater.teacher = updateAverage(updater.teacher, 5);
+//        return updater;
+//    }
 
     public static String updateAverage(String update, int param) {
         String a = "";

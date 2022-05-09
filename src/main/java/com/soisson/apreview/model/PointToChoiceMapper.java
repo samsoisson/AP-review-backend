@@ -78,7 +78,7 @@ public class PointToChoiceMapper
             case 5:
                 return "They don't usually teach, but the class is self-teachable.";
             default:
-                return "They don't usually teacher, and the class is difficult because of this!";
+                return "They don't usually teach, and the class is difficult because of this!";
         }
     }
 }

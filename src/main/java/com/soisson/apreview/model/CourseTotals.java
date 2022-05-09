@@ -1,7 +1,5 @@
 package com.soisson.apreview.model;
 
-import java.util.ArrayList;
-
 public class CourseTotals
 {
     private int diff,teacher,grade,hw, ap, counter,name;
@@ -17,33 +15,10 @@ public class CourseTotals
         this.counter=0;
     }
 
-    public int averageDiff()
-    {
-        return diff/counter;
-    }
-
-    public int averageAp()
-    {
-        return ap/counter;
-    }
 
     public int averageTeacher()
     {
-        int choice = teacher;
-        switch (choice) {
-            case 1:
-                teacher1++;break;
-            case 2:
-                teacher2++;break;
-            case 3:
-                teacher3++;break;
-            case 4:
-                teacher4++;break;
-            case 5:
-                teacher5++;break;
-            default:
-                teacher6++;break;
-        }
+        //TODO - might be an error here
         int[] teachers = {teacher1,teacher2,teacher3,teacher4,teacher5,teacher6};
         int majority=0;
         for (int i = 0; i < teachers.length; i++) {
@@ -63,7 +38,17 @@ public class CourseTotals
         return hw/counter;
     }
 
-    public Course getCourse()
+    public int averageDiff()
+    {
+        return diff/counter;
+    }
+
+    public int averageAp()
+    {
+        return ap/counter;
+    }
+
+    public Course calculateAverages()
     {
         Course myCourse=new Course("",
                 PointToChoiceMapper.MapDifficulty(averageDiff()),
@@ -71,8 +56,7 @@ public class CourseTotals
                 PointToChoiceMapper.MapGrade(averageGrade()),
                 PointToChoiceMapper.MapHomework(averageHw()),
                 "",
-                PointToChoiceMapper.MapAp(averageAp()),
-                counter);
+                PointToChoiceMapper.MapAp(averageAp()));
         return myCourse;
     }
 
@@ -83,10 +67,19 @@ public class CourseTotals
         this.ap+=ChoiceToPointMapper.MapAp(newCourse.ap);
         this.grade+=ChoiceToPointMapper.MapGrade(newCourse.grade);
         this.hw+=ChoiceToPointMapper.MapHomework(newCourse.hw);
-        this.teacher=ChoiceToPointMapper.MapTeacher(newCourse.teacher);
-        return newCourse;
-    }
 
+        int teacherPoint = ChoiceToPointMapper.MapTeacher(newCourse.teacher);
+//        if(teacherPoint==1)
+
+
+        return newCourse;
+        //TODO - get number value of newCourse.teacher
+        //TODO - pass the number value to the updateToUpperValue function
+    }
+    private void updateTeacherValue(int teacherValue)
+    {
+        //TODO - increment number of votes of the correct teacher rating
+    }
     public int getDiff()
     {
         return diff;
@@ -112,4 +105,5 @@ public class CourseTotals
         return hw;
     }
 
+    public int getCounter(){return counter;}
 }
